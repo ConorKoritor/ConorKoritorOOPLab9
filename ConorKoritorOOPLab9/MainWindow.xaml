@@ -19,7 +19,7 @@
             <RowDefinition Height="75px"></RowDefinition>
         </Grid.RowDefinitions>
         <Label x:Name="lblFormation" HorizontalAlignment="Left" Margin="55,0,0,0"  VerticalAlignment="Center" Content="Formation:"/>
-        <ComboBox x:Name="cmbxFormation" HorizontalAlignment="Left" Margin="133,0,0,0" VerticalAlignment="Center" Width="120"/>
+        <ComboBox x:Name="cmbxFormation" HorizontalAlignment="Left" Margin="133,0,0,0" VerticalAlignment="Center" Width="120" SelectionChanged="cmbxFormation_SelectionChanged"/>
         <ListBox x:Name="lstbxAllPlayers" Grid.Row="1" Margin="25"/>
         <ListBox x:Name="lstbxSelectedPlayers" Grid.Row="1" Grid.Column="2"  Margin="25"/>
         <Label x:Name="lblAllPlayers" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.Row="1" Content="All Players" VerticalAlignment="Top"/>

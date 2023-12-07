@@ -36,6 +36,11 @@ namespace ConorKoritorOOPLab9
             }
         }
 
+        public Position GetPosition()
+        {
+            return PreferredPosition;
+        }
+
         public override string ToString() 
         {
             return $"{FirstName} {LastName} ({Age}) {PreferredPosition} ";
