@@ -20,8 +20,10 @@ namespace ConorKoritorOOPLab9
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    
+
     //Enum for Positions a player can play
+
+    //Github Link https://github.com/ConorKoritor/ConorKoritorOOPLab9
     public enum Position
     {
         GoalKeeper,
