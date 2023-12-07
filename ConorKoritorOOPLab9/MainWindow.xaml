@@ -20,10 +20,10 @@
         </Grid.RowDefinitions>
         <Label x:Name="lblFormation" HorizontalAlignment="Left" Margin="55,0,0,0"  VerticalAlignment="Center" Content="Formation:"/>
         <ComboBox x:Name="cmbxFormation" HorizontalAlignment="Left" Margin="133,0,0,0" VerticalAlignment="Center" Width="120"/>
-        <ListBox Grid.Row="1" Margin="40"/>
-        <ListBox Grid.Row="1" Grid.Column="2"  Margin="40"/>
-        <Label x:Name="lblAllPlayers" HorizontalAlignment="Left" Margin="40,10,0,0" Grid.Row="1" Content="All Players" VerticalAlignment="Top"/>
-        <Label x:Name="lblSelectedPlayers" HorizontalAlignment="Left" Margin="40,10,0,0" Grid.Row="1" Grid.Column="2" Content="Selected Players" VerticalAlignment="Top"/>
+        <ListBox x:Name="lstbxAllPlayers" Grid.Row="1" Margin="25"/>
+        <ListBox x:Name="lstbxSelectedPlayers" Grid.Row="1" Grid.Column="2"  Margin="25"/>
+        <Label x:Name="lblAllPlayers" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.Row="1" Content="All Players" VerticalAlignment="Top"/>
+        <Label x:Name="lblSelectedPlayers" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.Row="1" Grid.Column="2" Content="Selected Players" VerticalAlignment="Top"/>
         <Button x:Name="btnAddPlayer" Grid.Column="1" Content="Add Player >>" HorizontalAlignment="Center" Margin="0,90,0,0" Grid.Row="1" VerticalAlignment="Top" Width="105px" Click="btnAddPlayer_Click"/>
         <Button x:Name="btnRemovePlayer" Grid.Column="1" Content="&lt;&lt; Remove Player" HorizontalAlignment="Center" Margin="0,180,0,0" Grid.Row="1" VerticalAlignment="Top" Width="105px" Click="btnRemovePlayer_Click"/>
         <Label x:Name="lblSpacesLeft" Grid.Column="2" Content="Spaces Left: " HorizontalAlignment="Left" Margin="40,20,0,0" Grid.Row="2" VerticalAlignment="Top"/>
