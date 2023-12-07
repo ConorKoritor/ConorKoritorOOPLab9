@@ -22,8 +22,10 @@ namespace ConorKoritorOOPLab9
             LastName = lastName;
             DateOfBirth = dateOfBirth;
             PreferredPosition = prefferedpos;
+            //Checks Age by subtracting the DOB year from the current year
             Age = (int)DateTime.Now.Year - (int)DateOfBirth.Year;
 
+            //because someone doesn't go up in age until their birthday this checks if their birthday has passed yet
             if(DateTime.Now.Month < DateOfBirth.Month)
             {
                 Age--;

@@ -59,11 +59,14 @@ namespace ConorKoritorOOPLab9
 
         private void btnAddPlayer_Click(object sender, RoutedEventArgs e)
         {
-
+            //When the add Player button is clicked the program first checks if their are any spaces left on the team
             if (SpacesLeft != 0)
             {
+                //If there are spaces left it then checks if there is a selected item in the lst box of all players
                 if (lstbxAllPlayers.SelectedItem != null)
                 {
+                    //If there is a selected item it adds the player to the Selected players Collection which is the item source for the Selected players List box
+                    //it then removes that player from the All Players Collection
                     SelectedPlayers.Add(lstbxAllPlayers.SelectedItem as Player);
                     AllPlayers.Remove(lstbxAllPlayers.SelectedItem as Player);
                     SpacesLeft--;
@@ -75,9 +78,12 @@ namespace ConorKoritorOOPLab9
         }
         private void btnRemovePlayer_Click(object sender, RoutedEventArgs e)
         {
+            //When the remoive button is clicked there is no need to check if there are any spaces left on the team
+            //This just checks if there is a selected player in the Selected Players List box
             if (lstbxSelectedPlayers.SelectedItem != null)
             {
-
+                //If there is a selected player it adds that player back into the all players collection and removes that player from the selected players
+                //collection
                 AllPlayers.Add(lstbxSelectedPlayers.SelectedItem as Player);
                 SelectedPlayers.Remove(lstbxSelectedPlayers.SelectedItem as Player);
                 SpacesLeft++;
@@ -87,24 +93,47 @@ namespace ConorKoritorOOPLab9
 
         private void CreatePlayers()
         {
+            //Creates 18 players using the random number generator to generate indices for the FirstName and LastName arrays
+            //and to generate a random Year, Month and Day for DOB
             for(int i = 0; i < 18; i++)
             {
                 Player p;
+                //Checks how many players we created so that we have the right number of players for each position
                 if(i < 2)
                 {
-                    p = new Player(firstNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, firstNames.Length)], lastNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, lastNames.Length)], new DateTime(ThreadSafeRandom.ThisThreadsRandom.Next(1993,2004), ThreadSafeRandom.ThisThreadsRandom.Next(1,13), ThreadSafeRandom.ThisThreadsRandom.Next(1, 28)), Position.GoalKeeper);
+                    p = new Player(firstNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, firstNames.Length)], 
+                        lastNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, lastNames.Length)], 
+                        new DateTime(ThreadSafeRandom.ThisThreadsRandom.Next(1993,2004), 
+                            ThreadSafeRandom.ThisThreadsRandom.Next(1,13), 
+                            ThreadSafeRandom.ThisThreadsRandom.Next(1, 28)), 
+                        Position.GoalKeeper);
                 }
                 else if (i < 8)
                 {
-                    p = new Player(firstNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, firstNames.Length)], lastNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, lastNames.Length)], new DateTime(ThreadSafeRandom.ThisThreadsRandom.Next(1993, 2004), ThreadSafeRandom.ThisThreadsRandom.Next(1, 13), ThreadSafeRandom.ThisThreadsRandom.Next(1, 28)), Position.Defender);
+                    p = new Player(firstNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, firstNames.Length)], 
+                        lastNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, lastNames.Length)], 
+                        new DateTime(ThreadSafeRandom.ThisThreadsRandom.Next(1993, 2004), 
+                            ThreadSafeRandom.ThisThreadsRandom.Next(1, 13), 
+                            ThreadSafeRandom.ThisThreadsRandom.Next(1, 28)), 
+                        Position.Defender);
                 }
                 else if (i < 14)
                 {
-                    p = new Player(firstNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, firstNames.Length)], lastNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, lastNames.Length)], new DateTime(ThreadSafeRandom.ThisThreadsRandom.Next(1993, 2004), ThreadSafeRandom.ThisThreadsRandom.Next(1, 13), ThreadSafeRandom.ThisThreadsRandom.Next(1, 28)), Position.Midfielder);
+                    p = new Player(firstNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, firstNames.Length)],
+                         lastNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, lastNames.Length)],
+                         new DateTime(ThreadSafeRandom.ThisThreadsRandom.Next(1993, 2004),
+                             ThreadSafeRandom.ThisThreadsRandom.Next(1, 13),
+                             ThreadSafeRandom.ThisThreadsRandom.Next(1, 28)),
+                         Position.Midfielder);
                 }
                 else
                 {
-                    p = new Player(firstNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, firstNames.Length)], lastNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, lastNames.Length)], new DateTime(ThreadSafeRandom.ThisThreadsRandom.Next(1993, 2004), ThreadSafeRandom.ThisThreadsRandom.Next(1, 13), ThreadSafeRandom.ThisThreadsRandom.Next(1, 28)), Position.Forward);
+                    p = new Player(firstNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, firstNames.Length)],
+                        lastNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, lastNames.Length)],
+                        new DateTime(ThreadSafeRandom.ThisThreadsRandom.Next(1993, 2004),
+                            ThreadSafeRandom.ThisThreadsRandom.Next(1, 13),
+                            ThreadSafeRandom.ThisThreadsRandom.Next(1, 28)),
+                        Position.Forward);
                 }
                 
                 AllPlayers.Add(p);
