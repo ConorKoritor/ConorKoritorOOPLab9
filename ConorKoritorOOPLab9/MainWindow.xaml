@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConorKoritorOOPLab9"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Background="LightGray">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75px"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="75px"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label x:Name="lblFormation" HorizontalAlignment="Left" Margin="55,0,0,0"  VerticalAlignment="Center" Content="Formation:"/>
+        <ComboBox x:Name="cmbxFormation" HorizontalAlignment="Left" Margin="133,0,0,0" VerticalAlignment="Center" Width="120"/>
+        <ListBox Grid.Row="1" Margin="40"/>
+        <ListBox Grid.Row="1" Grid.Column="2"  Margin="40"/>
+        <Label x:Name="lblAllPlayers" HorizontalAlignment="Left" Margin="40,10,0,0" Grid.Row="1" Content="All Players" VerticalAlignment="Top"/>
+        <Label x:Name="lblSelectedPlayers" HorizontalAlignment="Left" Margin="40,10,0,0" Grid.Row="1" Grid.Column="2" Content="Selected Players" VerticalAlignment="Top"/>
+        <Button x:Name="btnAddPlayer" Grid.Column="1" Content="Add Player >>" HorizontalAlignment="Center" Margin="0,90,0,0" Grid.Row="1" VerticalAlignment="Top" Width="105px"/>
+        <Button x:Name="btnRemovePlayer" Grid.Column="1" Content="&lt;&lt; Remove Player" HorizontalAlignment="Center" Margin="0,180,0,0" Grid.Row="1" VerticalAlignment="Top" Width="105px"/>
+        <Label x:Name="lblSpacesLeft" Grid.Column="2" Content="Spaces Left: " HorizontalAlignment="Left" Margin="40,20,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtblkSpacesLeft" Grid.Column="2" HorizontalAlignment="Left" Margin="121,25,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top"/>
     </Grid>
 </Window>
