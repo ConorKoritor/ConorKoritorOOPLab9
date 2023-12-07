@@ -34,7 +34,9 @@ namespace ConorKoritorOOPLab9
     {
         //Collections to hold the players for both list boxes
         ObservableCollection<Player> AllPlayers = new ObservableCollection<Player>();
+        List<Player> AllPlayerList;
         ObservableCollection<Player> SelectedPlayers = new ObservableCollection<Player>();
+        List<Player> SelectedPlayerList;   
         //Array of names to randomly generate players
         string[] firstNames = {
                 "Adam", "Amelia", "Ava", "Chloe", "Conor", "Daniel", "Emily",
@@ -63,7 +65,9 @@ namespace ConorKoritorOOPLab9
         {
             InitializeComponent();
 
-            CreatePlayers();
+            CreateListPlayers();
+
+            OrderPlayers();
 
             lstbxAllPlayers.ItemsSource = AllPlayers;
             lstbxSelectedPlayers.ItemsSource = SelectedPlayers;
@@ -114,6 +118,7 @@ namespace ConorKoritorOOPLab9
                     AllPlayers.Remove(lstbxAllPlayers.SelectedItem as Player);
                     SpacesLeft--;
                     txtblkSpacesLeft.Text = $"{SpacesLeft}";
+                    OrderPlayers();
                 }
             }
         }
@@ -131,10 +136,11 @@ namespace ConorKoritorOOPLab9
                 SelectedPlayers.Remove(lstbxSelectedPlayers.SelectedItem as Player);
                 SpacesLeft++;
                 txtblkSpacesLeft.Text = $"{SpacesLeft}";
+                OrderPlayers();
             }
         }
 
-        private void CreatePlayers()
+        private void CreateListPlayers()
         {
             //Creates 18 players using the random number generator to generate indices for the FirstName and LastName arrays
             //and to generate a random Year, Month and Day for DOB
@@ -144,43 +150,35 @@ namespace ConorKoritorOOPLab9
                 //Checks how many players we created so that we have the right number of players for each position
                 if(i < 2)
                 {
-                    p = new Player(firstNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, firstNames.Length)], 
-                        lastNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, lastNames.Length)], 
-                        new DateTime(ThreadSafeRandom.ThisThreadsRandom.Next(1993,2004), 
-                            ThreadSafeRandom.ThisThreadsRandom.Next(1,13), 
-                            ThreadSafeRandom.ThisThreadsRandom.Next(1, 28)), 
-                        Position.GoalKeeper);
+                    p = CreatePlayer(Position.GoalKeeper);
                 }
                 else if (i < 8)
                 {
-                    p = new Player(firstNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, firstNames.Length)], 
-                        lastNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, lastNames.Length)], 
-                        new DateTime(ThreadSafeRandom.ThisThreadsRandom.Next(1993, 2004), 
-                            ThreadSafeRandom.ThisThreadsRandom.Next(1, 13), 
-                            ThreadSafeRandom.ThisThreadsRandom.Next(1, 28)), 
-                        Position.Defender);
+                    p = CreatePlayer(Position.Defender);
                 }
                 else if (i < 14)
                 {
-                    p = new Player(firstNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, firstNames.Length)],
-                         lastNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, lastNames.Length)],
-                         new DateTime(ThreadSafeRandom.ThisThreadsRandom.Next(1993, 2004),
-                             ThreadSafeRandom.ThisThreadsRandom.Next(1, 13),
-                             ThreadSafeRandom.ThisThreadsRandom.Next(1, 28)),
-                         Position.Midfielder);
+                    p = CreatePlayer(Position.Midfielder);
                 }
                 else
                 {
-                    p = new Player(firstNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, firstNames.Length)],
-                        lastNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, lastNames.Length)],
-                        new DateTime(ThreadSafeRandom.ThisThreadsRandom.Next(1993, 2004),
-                            ThreadSafeRandom.ThisThreadsRandom.Next(1, 13),
-                            ThreadSafeRandom.ThisThreadsRandom.Next(1, 28)),
-                        Position.Forward);
+                    p = CreatePlayer(Position.Forward);
                 }
                 
                 AllPlayers.Add(p);
             }
+        }
+
+        private Player CreatePlayer(Position position)
+        {
+            //Creates a new player using the random class to generate random indices for the Player names and random DOB's to make the players between
+            //20 and 30 years old
+            return new Player(firstNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, firstNames.Length)],
+                       lastNames[ThreadSafeRandom.ThisThreadsRandom.Next(0, lastNames.Length)],
+                       new DateTime(ThreadSafeRandom.ThisThreadsRandom.Next(1993, 2004),
+                           ThreadSafeRandom.ThisThreadsRandom.Next(1, 13),
+                           ThreadSafeRandom.ThisThreadsRandom.Next(1, 28)),
+                       position);
         }
 
         private void CountPlayerType(Player p, bool IsAdd)
@@ -243,6 +241,18 @@ namespace ConorKoritorOOPLab9
                     break;
                 default : 
                     break;
+            }
+        }
+
+        private void OrderPlayers()
+        {
+            AllPlayers.OrderBy(player => player.GetPosition()).ThenBy(player => player.GetFirstName());
+            CollectionViewSource.GetDefaultView(AllPlayers).Refresh();
+
+            if(SelectedPlayers.Count > 0)
+            {
+                SelectedPlayers.OrderBy(player => player.GetPosition()).ThenBy(player => player.GetFirstName());
+                CollectionViewSource.GetDefaultView(SelectedPlayers).Refresh();
             }
         }
     }
