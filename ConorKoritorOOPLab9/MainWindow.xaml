@@ -24,8 +24,8 @@
         <ListBox Grid.Row="1" Grid.Column="2"  Margin="40"/>
         <Label x:Name="lblAllPlayers" HorizontalAlignment="Left" Margin="40,10,0,0" Grid.Row="1" Content="All Players" VerticalAlignment="Top"/>
         <Label x:Name="lblSelectedPlayers" HorizontalAlignment="Left" Margin="40,10,0,0" Grid.Row="1" Grid.Column="2" Content="Selected Players" VerticalAlignment="Top"/>
-        <Button x:Name="btnAddPlayer" Grid.Column="1" Content="Add Player >>" HorizontalAlignment="Center" Margin="0,90,0,0" Grid.Row="1" VerticalAlignment="Top" Width="105px"/>
-        <Button x:Name="btnRemovePlayer" Grid.Column="1" Content="&lt;&lt; Remove Player" HorizontalAlignment="Center" Margin="0,180,0,0" Grid.Row="1" VerticalAlignment="Top" Width="105px"/>
+        <Button x:Name="btnAddPlayer" Grid.Column="1" Content="Add Player >>" HorizontalAlignment="Center" Margin="0,90,0,0" Grid.Row="1" VerticalAlignment="Top" Width="105px" Click="btnAddPlayer_Click"/>
+        <Button x:Name="btnRemovePlayer" Grid.Column="1" Content="&lt;&lt; Remove Player" HorizontalAlignment="Center" Margin="0,180,0,0" Grid.Row="1" VerticalAlignment="Top" Width="105px" Click="btnRemovePlayer_Click"/>
         <Label x:Name="lblSpacesLeft" Grid.Column="2" Content="Spaces Left: " HorizontalAlignment="Left" Margin="40,20,0,0" Grid.Row="2" VerticalAlignment="Top"/>
         <TextBlock x:Name="txtblkSpacesLeft" Grid.Column="2" HorizontalAlignment="Left" Margin="121,25,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top"/>
     </Grid>
